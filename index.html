@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Wallet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="./CSS/style.css">
+  <style>
+    /* Basic Styles */
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Profile Wallet</h1>
+    <div class="container">
+      <div style="margin:2rem auto">
+        <div id="carbon-block"></div>
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+          crossorigin="anonymous"></script>
+        <!-- CSSScript Demo Page -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+          data-ad-client="ca-pub-2783044520727903" data-ad-slot="3025259193"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="userBx">
+      </div>
+      <div class="menuToggle"></div>
+      <ul class="menu">
+        <li>
+          <a href="signup.html"><ion-icon name="add-outline"></ion-icon>Signup</a>
+        </li>
+        <li>
+          <a href="./login.html"><ion-icon name="log-out-outline"></ion-icon>Login</a>
+        </li>
+        <li>
+          <a href="./profile.html"><ion-icon name="person-outline"></ion-icon>Profile</a>
+        </li>
+      </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+      let menuToggle = document.querySelector(".menuToggle");
+      let navigation = document.querySelector(".navigation");
+      menuToggle.onclick = function () {
+        navigation.classList.toggle("active");
+      };
+    </script>
+    <script>
+      try {
+        fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function (response) {
+          return true;
+        }).catch(function (e) {
+          var carbonScript = document.createElement("script");
+          carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CE7DC2JW&placement=wwwcssscriptcom";
+          carbonScript.id = "_carbonads_js";
+          document.getElementById("carbon-block").appendChild(carbonScript);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-LLWL5N9CSM');
+    </script>
+  </header>
+
+  <div class="content">
+    <h2>Welcome to Profile Wallet</h2>
+    <p>Profile Wallet is a secure platform to store your personal information, hobbies, and notes. It provides an easy
+      and organized way to manage your data.</p>
+    <h3>How to Use Profile Wallet</h3>
+    <p>Simply sign up for an account, log in, and start adding your personal data. You can categorize your information,
+      add notes, and update them anytime.</p>
+  </div>
+
+  <footer>
+    <p>About the Developer:</p>
+    <p>Hi! I'm Kabilan, a passionate developer dedicated to creating useful and innovative solutions. Connect
+      with me on:</p>
+    <a href="#"><i class="fab fa-instagram footer-icons"></i></a>
+    <a href="#"><i class="fab fa-linkedin footer-icons"></i></a>
+    <a href="#"><i class="fab fa-github footer-icons"></i></a>
+  </footer>
+</body>
+
+</html>
