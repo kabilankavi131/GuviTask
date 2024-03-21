@@ -3,7 +3,7 @@ $(document).ready(function () {
     e.preventDefault(); // Prevent form submission
     var uemail = $("#email").val();
     var upassword = $("#password").val();
-
+ 
     // AJAX form submission
     $.ajax({
       type: "POST",
@@ -15,8 +15,10 @@ $(document).ready(function () {
       success: function (response) {
         // Handle success
         if (response === "success") {
-          // Swal.fire("Log in successfully", "", "success");
-          $("#errorMessage").html(response);
+          Swal.fire("Log in successfully", "", "success");
+          setTimeout(() => {
+            window.location.href = "profile.html";
+          }, 2000);
         } else {
           $("#errorMessage").html(response); // Display error message
         }

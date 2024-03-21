@@ -24,9 +24,11 @@ $(document).ready(function () {
       success: function (response) {
         // Handle response from server
         if (response.trim() === "Registration successful") {
-          //Swal.fire("Sign Up successfully", "", "success");
-          $("#errorMessage").text(response);
-          window.location.href = "login.html";
+          Swal.fire("Sign Up successfully", "", "success");
+          setTimeout(() => {
+            window.location.href = "login.html";
+            localStorage.setItem("username", uemail);
+          }, 1000);
         } else {
           $("#errorMessage").text(response);
         }

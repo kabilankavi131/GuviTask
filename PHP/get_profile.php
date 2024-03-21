@@ -3,7 +3,7 @@
 
 // Assuming you have already started the session and stored the user ID in $_SESSION['user_id']
 
-$conn = new mysqli("localhost", "root", "", "guvi");
+$mysqli = new mysqli("sql6.freesqldatabase.com", "sql6692789", "rLfgKUMcbs", "sql6692789");
 $user_id = $_SESSION['email'];
 
 // Fetch user profile data from the database

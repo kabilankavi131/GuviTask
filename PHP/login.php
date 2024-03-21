@@ -1,15 +1,11 @@
 <?php
-// Get input data from POST request
-
-$mysqli = new mysqli("localhost", "root", "", "guvi");
+$mysqli = new mysqli("sql6.freesqldatabase.com", "sql6692789", "rLfgKUMcbs", "sql6692789");
 
 // Check connection
 if ($mysqli->connect_error) {
     die ("Connection failed: " . $mysqli->connect_error);
 }
 
-// $username = $_POST['email'];
-// $password = $_POST['password'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
