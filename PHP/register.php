@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+require "predis/autoload.php";
+Predis\Autoloader::register();
 // Establish MySQLi connection
-$mysqli = new mysqli("sql6.freesqldatabase.com", "sql6692789", "rLfgKUMcbs", "sql6692789");
+$mysqli = new mysqli("localhost", "root", "", "guvi");
 
 
 // Check connection
@@ -14,16 +16,31 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+// Redis
+
+$redis = new Predis\Client([
+    'scheme' => 'tcp',
+    'host' => 'redis-16299.c281.us-east-1-2.ec2.cloud.redislabs.com',
+    'port' => 16299,
+    'password' => 'cedHk6jeKkb0vsbdugzOrKmbNnhgBx0G',
+]);
+$redis->hmset("guvi:$username", [
+    "username" => $username,
+    "email" => $email,
+    "password" => $password,
+]);
 
 
 
-$uri = 'mongodb+srv://kabilankavi131:kabilankavi131mgdb@guvi.0vulpya.mongodb.net/?retryWrites=true&w=majority&appName=guvi';
+// MongoDB
+$uri = 'mongodb+srv://kabilankavi131:kabilankavimgdb@guvi.0vulpya.mongodb.net/?retryWrites=true&w=majority&appName=guvi';
 $client = new MongoDB\Client($uri);
 $db = $client->selectDatabase('usersdata');
 $collection = $db->selectCollection('profiledata');
 $data = [
     'name' => $username,
     'email' => $email,
+    'address' => "none",
 ];
 $result = $collection->insertOne($data);
 
@@ -31,7 +48,7 @@ $result = $collection->insertOne($data);
 if ($username != "" && $email != "" && $password != "") {
     try {
         // Your SQL query to insert data into the database
-        $query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
 
         // Prepare the query
         $statement = $mysqli->prepare($query);

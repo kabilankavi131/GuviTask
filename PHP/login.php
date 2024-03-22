@@ -1,31 +1,39 @@
 <?php
-$mysqli = new mysqli("sql6.freesqldatabase.com", "sql6692789", "rLfgKUMcbs", "sql6692789");
+require "predis/autoload.php";
+Predis\Autoloader::register();
+$mysqli = new mysqli("localhost", "root", "", "guvi");
 
 // Check connection
 if ($mysqli->connect_error) {
     die ("Connection failed: " . $mysqli->connect_error);
 }
 
-$email = $_POST['email'];
+$username = $_POST['username'];
 $password = $_POST['password'];
+//  Redis 
+$redis = new Predis\Client([
+    'scheme' => 'tcp',
+    'host' => 'redis-16299.c281.us-east-1-2.ec2.cloud.redislabs.com',
+    'port' => 16299,
+    'password' => 'cedHk6jeKkb0vsbdugzOrKmbNnhgBx0G',
+]);
+$hashKey = "guvi:" . $username;
+$hashData = $redis->hgetall($hashKey);
+
+// Check if the hash exists and fetch its data
+$flag = 0;
+if (!empty ($hashData)) {
+
+    if ($password == $hashData["password"])
+        $flag = 1;
+} else {
+    $flag = 0;
+}
 
 try {
-    $query = "SELECT * FROM users WHERE email = ? AND password = ?";
-
-    // Prepare the query
-    $statement = $mysqli->prepare($query);
-
-    // Bind parameters
-    $statement->bind_param("ss", $email, $password);
-
-    // Execute the query
-    $statement->execute();
-
-    // Get the result
-    $result = $statement->get_result();
 
     // Check if there is a match
-    if ($result->num_rows == 1) {
+    if ($flag) {
         // Login successful
         echo "success";
     } else {

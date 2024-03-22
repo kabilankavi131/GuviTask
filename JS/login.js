@@ -1,17 +1,17 @@
 $(document).ready(function () {
   $("#login").click(function (e) {
     e.preventDefault(); // Prevent form submission
-    var uemail = $("#email").val();
+    var uname = $("#username").val();
     var upassword = $("#password").val();
- 
+
     // AJAX form submission
     $.ajax({
       type: "POST",
       url: "./PHP/login.php",
       data: {
-        email: uemail,
         password: upassword,
-      }, // Serialize form data
+        username: uname,
+      },
       success: function (response) {
         // Handle success
         if (response === "success") {
@@ -20,7 +20,7 @@ $(document).ready(function () {
             window.location.href = "profile.html";
           }, 2000);
         } else {
-          $("#errorMessage").html(response); // Display error message
+          Swal.fire("User Not Found", "Sign up first", "error");
         }
       },
       error: function (xhr, status, error) {

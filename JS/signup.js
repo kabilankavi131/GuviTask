@@ -5,6 +5,7 @@ $(document).ready(function () {
     var email = $("#email").val();
     var password = $("#password").val();
     var confirmPassword = $("#confirmPassword").val();
+    localStorage.setItem("localname", username);
 
     // Perform client-side validation
     if (password !== confirmPassword) {
